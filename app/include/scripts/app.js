@@ -1,3 +1,3 @@
 function test(){
-return 0;
+return 2+3;
 }

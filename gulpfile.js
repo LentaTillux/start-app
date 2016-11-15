@@ -121,37 +121,44 @@ gulp.task('styles:css', ['styles:sass'], function () {
         .pipe(gulp.dest(path.app.css));      //Результат выгрузить в директорию
 });
 
-gulp.task('styles:coffee', function () {
+gulp.task('include:coffee', function () {
     gulp.src([path.app.coffee+'**/*.coffee'])
         .pipe(coffee({bare: true}).on('error', util.log))
         .pipe(gulp.dest(path.app.babel+'coffee/'));
 });
 
-gulp.task('styles:ts', function () {
+gulp.task('include:ts', function () {
     gulp.src([path.app.ts+'**/*.ts'])
         .pipe(typescript({ noImplicitAny: true }))
         .pipe(gulp.dest(path.app.babel+'typescript/'));
 });
 
-gulp.task('styles:es', function () {
+gulp.task('include:es', function () {
     gulp.src([path.app.babel+'**/*.js'])
         .pipe(babel({ presets: ['es2015'] }))
         .pipe(gulp.dest(path.app.js));
 });
 
-gulp.task('styles:js', ['styles:es'], function () {
+gulp.task('styles:js', ['include:es'], function () {
     gulp.src(['!'+path.app.js+'**/app.min.js', path.app.js+'**/*.js'])
       .pipe(concat('app.min.js'))     //Собираем файлы
       .pipe(uglifyjs())               //Сжатие JS файла
       .pipe(gulp.dest(path.app.js));  //Результат выгрузить в директорию
 });
 
+gulp.task('project:start', [
+    'include:html',
+    'styles:css',
+    'include:coffee',
+    'include:ts',
+    'styles:js',
+]);
 //
-gulp.task('watch', function(){
+gulp.task('watch', ['project:start'], function(){
     gulp.watch([path.watch.htmls],  ['include:html']);
     gulp.watch([path.watch.sass],   ['styles:css']);
-    gulp.watch([path.watch.coffee], ['styles:coffee']);
-    gulp.watch([path.watch.ts],     ['styles:ts']);
+    gulp.watch([path.watch.coffee], ['include:coffee']);
+    gulp.watch([path.watch.ts],     ['include:ts']);
     gulp.watch([path.watch.babel],  ['styles:js']);
     gulp.watch([path.watch.html],   reload);
     gulp.watch([path.watch.js],     reload);
