@@ -1,0 +1,21 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "authors": [
+    "sSolov <iserverserver@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+
+  }
+}
