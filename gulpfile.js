@@ -60,6 +60,7 @@ var path = {
         sass:   'app/include/sass/',
         coffee: 'app/include/coffee/',
         ts:     'app/include/typescript/',
+        react:  'app/include/react/',
         babel:  'app/include/scripts/',
         libs:   'app/libs'
     },
@@ -134,7 +135,7 @@ gulp.task('include:ts', function () {
 });
 
 gulp.task('include:es', function () {
-    gulp.src([path.app.babel+'**/*.js'])
+    gulp.src(['!'+path.app.babel+'react/', path.app.babel+'**/*.js'])
         .pipe(babel({ presets: ['es2015'] }))
         .pipe(gulp.dest(path.app.js));
 });
@@ -160,11 +161,11 @@ gulp.task('watch', ['project:start'], function(){
     gulp.watch([path.watch.coffee], ['include:coffee']);
     gulp.watch([path.watch.ts],     ['include:ts']);
     gulp.watch([path.watch.babel],  ['styles:js']);
-    gulp.watch([path.watch.html],   reload);
-    gulp.watch([path.watch.js],     reload);
-    gulp.watch([path.watch.css],    reload);
-    gulp.watch([path.watch.img],    reload);
-    gulp.watch([path.watch.fonts],  reload);
+    //gulp.watch([path.watch.html],   reload);
+    //gulp.watch([path.watch.js],     reload);
+    //gulp.watch([path.watch.css],    reload);
+    //gulp.watch([path.watch.img],    reload);
+    //gulp.watch([path.watch.fonts],  reload);
 });
 //
 gulp.task('project:build', function () {
