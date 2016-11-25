@@ -55,13 +55,14 @@ webpack.config.gulp.js //clone file - for copy in packages/[name_pack]
 ### Usage
 > __Warning install!__
 typescript, babel...
+
 ```
 npm install
 npm install gulp-typescript typescript
 npm start
 Open http://localhost:[port]
 ```
-### Develop
+#### Develop
 ```
 gulp watch
 __or(default)__
@@ -70,10 +71,3 @@ __or()__
 webpack
 ```
 
-### Linting
-
-ESLint with React linting options have been enabled.
-
-```
-npm run lint
-```
