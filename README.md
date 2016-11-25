@@ -50,7 +50,7 @@ webpack.config.js
 ```
 npm install
 npm start
-Open http://localhost:5000
+Open http://localhost:[port]
 ```
 
 ### Linting
