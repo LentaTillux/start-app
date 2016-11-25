@@ -16,22 +16,22 @@ The various webpack options used have been explained in detailed as comments in 
 ### Application Structure
 
 ```
-__app/__
-  - __include/__
+app/
+  - include/
     - html/
     - sass/
     - coffee/
     - typescript/
-    - __scripts/__
+    - scripts/
       - coffee/
-      - __packages/__
+      - packages/
         - react/
           - index.js
-          - __webpack.config.gulp.js__
+          - webpack.config.gulp.js
       - typescript/
       - app.js
   - libs/               //Bower: jQuery, Bootstrap, React, etc.
-  - __styles/__
+  - styles/
     - css/
     - js/
       - packages/
@@ -52,12 +52,9 @@ server.js
 webpack.config.js
 webpack.config.gulp.js //clone file - for copy in packages/[name_pack]
 ```
-### Node
+### Usage
 > __Warning install!__
 typescript, babel...
-
-### Usage
-
 ```
 npm install
 npm install gulp-typescript typescript
