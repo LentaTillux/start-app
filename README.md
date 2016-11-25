@@ -16,41 +16,61 @@ The various webpack options used have been explained in detailed as comments in 
 ### Application Structure
 
 ```
-app/
-  - include/
+__app/__
+  - __include/__
     - html/
     - sass/
     - coffee/
     - typescript/
-    - scripts/
+    - __scripts/__
       - coffee/
-      - packages/
+      - __packages/__
+        - react/
+          - index.js
+          - __webpack.config.gulp.js__
       - typescript/
-      - main.js
-  - libs/
-  - styles/
+      - app.js
+  - libs/               //Bower: jQuery, Bootstrap, React, etc.
+  - __styles/__
     - css/
     - js/
+      - packages/
+        - react/
     - index.html
 build/
 node_modules/ **
 sh-scripts/ **
+IGNORE/ **
 
 .bowerrc
+.gitignore
 README.md
 bower.json
 gulpfile.js
 package.json
 server.js
 webpack.config.js
+webpack.config.gulp.js //clone file - for copy in packages/[name_pack]
 ```
+### Node
+> __Warning install!__
+typescript, babel...
 
 ### Usage
 
 ```
 npm install
+npm install gulp-typescript typescript
 npm start
 Open http://localhost:[port]
+```
+### Develop
+```
+gulp watch
+__or(default)__
+gulp
+__or()__
+webpack
 ```
 
 ### Linting
