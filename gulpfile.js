@@ -102,6 +102,7 @@ gulp.task('styles:sass', function () {
             { cascade: true }))              //CSS префиксы
         .pipe(gulp.dest(path.app.css));      //Результат выгрузить в директорию
 });
+
 gulp.task('styles:css', ['styles:sass'], function () {
     gulp.src(['!'+path.app.css+'**/*.min.css', path.app.css+'**/*.css'])
         .pipe(cssnano())                     //Сжатие файлов
