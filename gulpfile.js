@@ -57,7 +57,7 @@ var path = {
         img:    'app/styles/img/**/*.*',
         fonts:  'app/styles/fonts/**/*.*',
         htmls:  'app/include/html/**/*.html',
-        sass:   'app/include/sass/**/*.sass',
+        sass:   'app/include/sass/**/*.*',
         coffee: 'app/include/coffee/**/*.coffee',
         ts:     'app/include/typescript/**/*.ts',
         babel:  'app/include/scripts/**/*.js',
