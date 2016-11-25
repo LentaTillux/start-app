@@ -181,4 +181,6 @@ gulp.task('watch', ['project:start'], function(){
 gulp.task('project:build', function () {
 });
 
-gulp.task('default', ['project:build', 'webserver', 'watch']);
+gulp.task('default', ['project:build',
+                      //'webserver',
+                      'watch']);
