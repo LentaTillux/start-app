@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * WEBPACK CONFIG
  *
@@ -39,54 +41,44 @@
  * that is actually delivered to the end user browser.
  */
 
-var path    = require('path');
+var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry:  [
-    /*'webpack-dev-server/client?http://localhost:3030',
-    'webpack/hot/dev-server',*/
+  entry: [
+  /*'webpack-dev-server/client?http://localhost:3030',
+  'webpack/hot/dev-server',*/
 
-    './app/include/scripts/packages/react/index.js',
-    './app/include/scripts/packages/react/main.sass'
-  ],
+  './app/include/scripts/packages/react/index.js', './app/include/scripts/packages/react/main.sass'],
   output: {
-    path:     './app/styles/js/',
+    //path:     './app/styles/js/',
+    path: '/',
     filename: '[name].js'
   },
   module: {
-    loaders: [
-      {
-        test:    /\.js|.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel'/*,
-        query: ['es2015', 'react', 'stage-0', 'stage-1']*/
-      },
-      {
-        test: /\.css|.sass$/,
-        loaders: [
-          'style',
-          'css?sourceMap'
-          /*'css-loader!autoprefixer-loader?browsers=last 2 versions'*/,
-          'sass?sourceMap']
-      },
-      {
-        test: /\.(png|jpg|svg|gif|eot|woff|ttf)$/,
-        loader: 'file-loader'
-      }
-    ]
+    loaders: [{
+      test: /\.js|.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'babel' /*,
+                      query: ['es2015', 'react', 'stage-0', 'stage-1']*/
+    }, {
+      test: /\.css|.sass$/,
+      loaders: ['style', 'css?sourceMap'
+      /*'css-loader!autoprefixer-loader?browsers=last 2 versions'*/
+      , 'sass?sourceMap']
+    }, {
+      test: /\.(png|jpg|svg|gif|eot|woff|ttf)$/,
+      loader: 'file-loader'
+    }]
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.css', '.sass']
   },
   //
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NoErrorsPlugin()],
   //
   devtool: 'source-map',
-  watch: true,
+  //watch: true,
   colors: true,
   progress: true
 };

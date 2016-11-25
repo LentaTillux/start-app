@@ -51,7 +51,8 @@ module.exports = {
     './app/include/scripts/packages/react/main.sass'
   ],
   output: {
-    path:     './app/styles/js/',
+    //path:     './app/styles/js/',
+    path:     '/',
     filename: '[name].js'
   },
   module: {
@@ -86,7 +87,7 @@ module.exports = {
   ],
   //
   devtool: 'source-map',
-  watch: true,
+  //watch: true,
   colors: true,
   progress: true
 };
