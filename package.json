@@ -36,7 +36,7 @@
     "gulp-typescript": "*",
     "gulp-uglify": "*",
     "gulp-util": "*",
-    "gulp-webpack": "*",
+    "webpack-stream": "*",
     "webpack": "*",
     "webpack-dev-server": "*"
   },
