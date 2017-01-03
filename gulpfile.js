@@ -13,7 +13,7 @@ var gulp         = require('gulp'),             //Gulp - система сбор
     cache        = require('gulp-cache'),       //A cache proxy plugin for Gulp
     concat       = require('gulp-concat'),      //Concatenates + files
     rigger       = require('gulp-rigger'),      //import file to file ( //= footer.html )
-    webpack      = require('gulp-webpack'),     //webpack plugin for gulp
+    webpack      = require('webpack-stream'),     //webpack plugin for gulp
 
     coffee       = require('gulp-coffee'),      //синтаксический сахар для JS
     typescript   = require('gulp-typescript'),  //A compiler for gulp with incremental compilation support.
