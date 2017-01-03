@@ -8,7 +8,7 @@ Boilerplate for kick starting a project with the following technologies:
 * [Babel 6](http://babeljs.io)
 * [Webpack](http://webpack.github.io) for bundling
 * [Webpack Dev Server](http://webpack.github.io/docs/webpack-dev-server.html)
-* [React Transform](https://github.com/gaearon/react-transform-hmr) for hot reloading React components in real time.
+* [React Transform](https://github.com/gaearon/react-transform-hmr) for hot reloading React components in real time. (NO!)
 * etc.
 
 The various webpack options used have been explained in detailed as comments in the config file. Should help with understanding the nitty-gritty :)
@@ -60,7 +60,7 @@ typescript, babel...
 npm install gulp-typescript typescript
 npm install
 npm start
-Open http://localhost:[port]
+Open http://localhost:[port]/app
 ```
 #### Develop
 ```
