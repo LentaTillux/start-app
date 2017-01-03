@@ -57,8 +57,8 @@ webpack.config.gulp.js //clone file - for copy in packages/[name_pack]
 typescript, babel...
 
 ```
-npm install
 npm install gulp-typescript typescript
+npm install
 npm start
 Open http://localhost:[port]
 ```
