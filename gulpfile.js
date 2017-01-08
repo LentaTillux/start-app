@@ -90,7 +90,7 @@ gulp.task('cache:clear', function () {
 });
 
 gulp.task('include:html', function () {
-    gulp.src([path.app.htmls+'**/*.html'])
+    gulp.src(["!"+path.app.htmls+'packages/', path.app.htmls+'**/*.html'])
         .pipe(rigger())
         .pipe(gulp.dest(path.app.html));
 });
