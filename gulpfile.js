@@ -103,7 +103,7 @@ gulp.task('styles:sass', function () {
         .pipe(gulp.dest(path.app.css));      //Результат выгрузить в директорию
 });
 
-gulp.task('styles:css', ['styles:sass'], function () {
+gulp.task('styles:css', function () {
     gulp.src(['!'+path.app.css+'**/*.min.css', path.app.css+'**/*.css'])
         .pipe(cssnano())                     //Сжатие файлов
         .pipe(rename({suffix: '.min'}))      //Добавление суффикса .min
@@ -165,7 +165,8 @@ gulp.task('project:start', [
 //
 gulp.task('watch', ['project:start'], function(){
     gulp.watch([path.watch.htmls],      ['include:html']);
-    gulp.watch([path.watch.sass],       ['styles:css']);
+    gulp.watch([path.watch.sass],       ['styles:sass']);
+    gulp.watch([path.watch.css],        ['styles:css']);
     gulp.watch([path.watch.coffee],     ['include:coffee']);
     gulp.watch([path.watch.ts],         ['include:ts']);
     gulp.watch([path.watch.babel],      ['styles:javascript']);
