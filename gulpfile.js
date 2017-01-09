@@ -154,6 +154,7 @@ gulp.task('include:packages', [
 
 gulp.task('project:start', [
     'include:html',
+    'styles:sass',
     'styles:css',
     'include:coffee',
     'include:ts',
