@@ -90,7 +90,7 @@ gulp.task('cache:clear', function () {
 });
 
 gulp.task('include:html', function () {
-    gulp.src(["!"+path.app.htmls+'packages/', path.app.htmls+'**/*.html'])
+    gulp.src(["!"+path.app.htmls+'packages/**', path.app.htmls+'**/*.html'])
         .pipe(rigger())
         .pipe(gulp.dest(path.app.html));
 });
@@ -123,13 +123,13 @@ gulp.task('include:ts', function () {
 });
 
 gulp.task('include:es', function () {
-    gulp.src(['!'+path.app.packages, path.app.babel+'**/*.js'])
+    gulp.src(['!'+path.app.packages+'**', path.app.babel+'**/*.js'])
         .pipe(babel({ presets: ['es2015'] }))
         .pipe(gulp.dest(path.app.js));
 });
 
 gulp.task('styles:js', function () {
-    gulp.src(['!'+path.app.js+'**/app.min.js', path.app.js+'**/*.js'])
+    gulp.src(['!'+path.app.js+'**/*.min.js','!'+path.app.js+'packages/**', path.app.js+'**/*.js'])
       .pipe(concat('app.min.js'))     //Собираем файлы
       .pipe(uglify())                 //Сжатие JS файла
       .pipe(gulp.dest(path.app.js));  //Результат выгрузить в директорию
