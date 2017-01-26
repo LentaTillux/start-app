@@ -52,10 +52,10 @@ var path = {
     },
     watch: {
         html:  'app/*.html',
-        js:     'app/styles/js/**/*.js',
-        css:    'app/styles/css/**/*.css',
-        img:    'app/styles/img/**/*.*',
-        fonts:  'app/styles/fonts/**/*.*',
+        js:     'build/styles/js/**/*.js',
+        css:    'build/styles/css/**/*.css',
+        img:    'build/styles/img/**/*.*',
+        fonts:  'build/styles/fonts/**/*.*',
         htmls:  'app/include/html/**/*.html',
         sass:   'app/include/sass/**/*.*',
         coffee: 'app/include/coffee/**/*.coffee',
@@ -92,7 +92,7 @@ gulp.task('cache:clear', function () {
 gulp.task('include:html', function () {
     gulp.src(["!"+path.app.htmls+'packages/**', path.app.htmls+'**/*.html'])
         .pipe(rigger())
-        .pipe(gulp.dest(path.app.html));
+        .pipe(gulp.dest(path.build.html));
 });
 
 gulp.task('styles:sass', function () {
@@ -100,14 +100,14 @@ gulp.task('styles:sass', function () {
         .pipe(sass())
         .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'],
             { cascade: true }))              //CSS префиксы
-        .pipe(gulp.dest(path.app.css));      //Результат выгрузить в директорию
+        .pipe(gulp.dest(path.build.css));      //Результат выгрузить в директорию
 });
 
-gulp.task('styles:css', function () {
-    gulp.src(['!'+path.app.css+'**/*.min.css', path.app.css+'**/*.css'])
+gulp.task('styles:css',  function () {
+    gulp.src(['!'+path.build.css+'**/*.min.css', path.build.css+'**/*.css'])
         .pipe(cssnano())                     //Сжатие файлов
         .pipe(rename({suffix: '.min'}))      //Добавление суффикса .min
-        .pipe(gulp.dest(path.app.css));      //Результат выгрузить в директорию
+        .pipe(gulp.dest(path.build.css));      //Результат выгрузить в директорию
 });
 
 gulp.task('include:coffee', function () {
@@ -125,26 +125,27 @@ gulp.task('include:ts', function () {
 gulp.task('include:es', function () {
     gulp.src(['!'+path.app.packages+'**', path.app.babel+'**/*.js'])
         .pipe(babel({ presets: ['es2015'] }))
-        .pipe(gulp.dest(path.app.js));
+        .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task('styles:js', function () {
-    gulp.src(['!'+path.app.js+'**/*.min.js','!'+path.app.js+'packages/**', path.app.js+'**/*.js'])
+    gulp.src(['!'+path.build.js+'**/*.min.js','!'+path.build.js+'packages/**', path.build.js+'**/*.js'])
       .pipe(concat('app.min.js'))     //Собираем файлы
       .pipe(uglify())                 //Сжатие JS файла
-      .pipe(gulp.dest(path.app.js));  //Результат выгрузить в директорию
+      .pipe(gulp.dest(path.build.js));  //Результат выгрузить в директорию
 });
 gulp.task('styles:javascript', [
     'include:es',
     'styles:js'
 ]);
+
 //
 // Packages: Webpack(ES), etc.
 //
 gulp.task('include:webpack:react', function() {
     return gulp.src([path.app.pack_react+'index.js'])
         .pipe(webpack( require('./'+path.app.pack_react+'webpack.config.gulp.js') ))
-        .pipe(gulp.dest(path.app.js+'packages/react/'));
+        .pipe(gulp.dest(path.build.js+'packages/react/'));
 });
 
 gulp.task('include:packages', [
