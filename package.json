@@ -1,5 +1,5 @@
 {
-  "name": "react-es6-gulp-webpack-boilerplate",
+  "name": "sample-app-boilerplate",
   "version": "0.1.0",
   "main": "index.html",
   "scripts": {
@@ -50,7 +50,7 @@
     "babel",
     "webpack"
   ],
-  "description": "Boilerplate for kick starting a React Project with ES6 (Babel) and using Gulp with Webpack.",
+  "description": "Boilerplate for kick starting a React Components with ES_Next (Babel) and using Gulp with Webpack.",
   "license": "MIT",
   "author": "sSolov",
   "homepage": "https://github.com/Solov/"
