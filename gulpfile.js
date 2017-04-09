@@ -40,8 +40,8 @@ var path = {
         html:   'app/',
         js:     'app/styles/js/',
         css:    'app/styles/css/',
-        img:    'app/styles/img/',
-        fonts:  'app/styles/fonts/',
+        img:    'app/include/img/',
+        fonts:  'app/include/fonts/',
         htmls:  'app/include/html/',
         sass:   'app/include/sass/',
         coffee: 'app/include/coffee/',
@@ -112,7 +112,7 @@ gulp.task('styles:sass', function () {
         .pipe(gulp.dest(path.build.css));      //Результат выгрузить в директорию
 });
 
-gulp.task('styles:css',  function () {
+gulp.task('styles:cssmin',  function () {
     gulp.src(['!'+path.build.css+'**/*.min.css', path.build.css+'**/*.css'])
         .pipe(cssnano())                     //Сжатие файлов
         .pipe(rename({suffix: '.min'}))      //Добавление суффикса .min
@@ -148,6 +148,16 @@ gulp.task('styles:javascript', [
     'styles:js'
 ]);
 
+//img + fonts + etc. copy
+gulp.task('include:img', function () {
+    gulp.src([path.app.img+'**/*.*'])
+        .pipe(gulp.dest(path.build.img));
+});
+gulp.task('include:fonts', function () {
+    gulp.src([path.app.fonts+'**/*.*'])
+        .pipe(gulp.dest(path.build.fonts));
+});
+
 //
 // Packages: Webpack(ES), etc.
 //
@@ -165,7 +175,7 @@ gulp.task('include:packages', [
 gulp.task('project:start', [
     'include:html',
     'styles:sass',
-    'styles:css',
+    'styles:cssmin',
     'include:coffee',
     'include:ts',
     'include:packages',
@@ -177,11 +187,13 @@ gulp.task('project:start', [
 gulp.task('watch', ['project:start'], function(){
     gulp.watch([path.watch.htmls],      ['include:html']);
     gulp.watch([path.watch.sass],       ['styles:sass']);
-    gulp.watch([path.watch.css],        ['styles:css']);
+    gulp.watch([path.watch.css],        ['styles:cssmin']);
     gulp.watch([path.watch.coffee],     ['include:coffee']);
     gulp.watch([path.watch.ts],         ['include:ts']);
     gulp.watch([path.watch.babel],      ['styles:javascript']);
     gulp.watch([path.watch.pack_react], ['include:packages']);
+    gulp.watch([path.watch.img],        ['include:img']);
+    gulp.watch([path.watch.fonts],      ['include:fonts']);
     //gulp.watch([path.watch.html],   reload);
     //gulp.watch([path.watch.js],     reload);
     //gulp.watch([path.watch.css],    reload);
