@@ -58,7 +58,7 @@ typescript, babel...
 
 ```
 npm install -g gulp
-npm install gulp-typescript typescript
+npm install gulp-typescript typescript gulp-file-include
 npm install
 npm start
 Open http://localhost:[port]/app
