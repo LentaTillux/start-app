@@ -13,6 +13,7 @@ var gulp         = require('gulp'),             //Gulp - система сбор
     cache        = require('gulp-cache'),       //A cache proxy plugin for Gulp
     concat       = require('gulp-concat'),      //Concatenates + files
     rigger       = require('gulp-rigger'),      //import file to file ( //= footer.html )
+    fileinclude  = require('gulp-file-include'), //import file to file https://github.com/coderhaoxin/gulp-file-include
     webpack      = require('webpack-stream'),     //webpack plugin for gulp
 
     coffee       = require('gulp-coffee'),      //синтаксический сахар для JS
@@ -89,10 +90,18 @@ gulp.task('cache:clear', function () {
   return cache.clearAll();
 });
 
-gulp.task('include:html', function () {
+gulp.task('no-include:html', function () { //устарел - в будущем удалится
     gulp.src(["!"+path.app.htmls+'packages/**', path.app.htmls+'**/*.html'])
         .pipe(rigger())
         .pipe(gulp.dest(path.build.html));
+});
+gulp.task('include:html', function() {
+  gulp.src(["!"+path.app.htmls+'packages/**', path.app.htmls+'**/*.html'])
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest(path.build.html));
 });
 
 gulp.task('styles:sass', function () {
