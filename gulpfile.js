@@ -105,7 +105,7 @@ gulp.task('include:html', function() {
 });
 
 gulp.task('styles:sass', function () {
-    gulp.src([path.app.sass+'**/*.sass', path.app.sass+'**/*.css'])
+    gulp.src([path.app.sass+'**/*.sass',path.app.sass+'**/*.scss', path.app.sass+'**/*.css'])
         .pipe(sass())
         .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'],
             { cascade: true }))              //CSS префиксы
