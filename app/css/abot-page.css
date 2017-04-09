@@ -1,0 +1,61 @@
+.about-page__director-foto{
+  max-width: 360px;
+}
+/* Slider */
+.about-team__slider{
+  width: 100%;
+  position: relative;
+  margin: 30px auto 0;
+}
+.about-slider__viewport{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  min-height: 304px;
+}
+.about-slider__overview{
+  list-style: none;
+  position: absolute;
+  left: 0; top: 0;
+}
+.about-team__b-prev, .about-team__b-next{
+  position: absolute;
+  width: 60px;
+  height: 39px;
+  top: 131px;
+}
+.about-team__b-prev{
+  left: -75px;
+}
+.about-team__b-next{
+  right: -75px;
+}
+.about-slider__item{
+  float: left;
+  width: 570px;
+  height: 304px;
+  padding-right: 20px;
+  /*border: 1px solid #dcdcdc;*/
+}
+.about-slider__img{
+  max-height: 250px;
+  max-width: 180px;
+  margin-right: 14px;
+}
+.about-slider__name{
+  font-size: 18px;
+  color: #c0212e;
+  text-transform: uppercase;
+  font-family: 'marta';
+}
+.about-slider__dol{
+  padding-bottom: 28px;
+  font-family: 'marta';
+}
+.about-slider__txt{
+  margin: 0;
+  padding: 0 0 9px;
+  color: #2c323b;
+  font-size: 14px;
+  text-indent: 15px;
+}

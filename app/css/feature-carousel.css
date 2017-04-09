@@ -1,0 +1,76 @@
+/********************
+ * FEATURE CAROUSEL *
+ ********************/
+.carousel-container {
+  position:relative;
+  width:1100px;
+  margin:0 auto;
+}
+#carousel {
+  height:410px;
+  width:1140px;
+  position:relative;
+}
+.carousel-image {
+  display:block;
+}
+.carousel-feature {
+  position:absolute;
+  top:-1000px;
+  left:-1000px;
+}
+.carousel-feature:hover  .ssilka{visibility:visible;   }
+.carousel-feature .carousel-caption {
+  position:absolute;
+  top:6px;
+  left:6px;
+  width:683px;
+  height:393px;
+  -webkit-transition: background-color 0.5s linear;
+ -o-transition: background-color 0.5s linear;
+ -moz-transition: background-color 0.5s linear;
+ transition: background-color 0.5s linear;
+}
+.carousel-feature .carousel-caption:hover  {background-color:#000;}
+
+.carousel-feature .carousel-caption p {
+  margin:0;
+  padding:5px;
+  font-weight:bold;
+  font-size:12px;
+  color:white;
+}
+.tracker-summation-container {
+  position:absolute;
+  color:white;
+  right:48px;
+  top:230px;
+  padding:3px;
+  margin:3px;
+  background-color:#000;
+  visibility:hidden;
+}
+.tracker-individual-container {
+  position:absolute;
+  color:white;
+  right:48px;
+  top:210px;
+  padding:0;
+  margin:0;
+  visibility:hidden;
+}
+.tracker-individual-container li {
+  list-style:none;
+}
+.tracker-individual-container .tracker-individual-blip {
+  margin:0 3px;
+  padding:0 3px;
+  color:white;
+  text-align:center;
+  background-color:#DDD;
+}
+.tracker-individual-container .tracker-individual-blip-selected {
+  color:white;
+  font-weight:bold;
+  background-color:#000;
+}

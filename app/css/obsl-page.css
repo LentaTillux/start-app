@@ -1,0 +1,24 @@
+/* List abon_obsl */
+.abon-obsl__box{
+  position: absolute;
+  width: 1140px;
+  z-index: 99;
+}
+.abon_obsl{
+}
+
+.abn-obsl_list{
+  list-style-position: inside;
+}
+.abon-obsl__box .abon-obsl__item{
+  margin-right: 0px;
+}
+.abon-obsl__box .abon-obsl__itm1, .abon-obsl__box .abon-obsl__itm3{
+  width: 30%;
+}
+.abon-obsl__box .abon-obsl__itm2{
+  width: 40%;
+}
+.abn-obsl_list{
+  list-style-position: inside;
+}
