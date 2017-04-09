@@ -32,6 +32,7 @@
     "gulp-cssnano": "*",
     "gulp-rename": "*",
     "gulp-rigger": "*",
+    "gulp-file-include": "*",
     "gulp-sass": "*",
     "gulp-typescript": "*",
     "gulp-uglify": "*",
