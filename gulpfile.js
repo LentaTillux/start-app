@@ -38,30 +38,30 @@ var path = {
     app: {
         home:   'app',
         html:   'app/',
-        js:     'app/styles/js/',
-        css:    'app/styles/css/',
-        img:    'app/include/img/',
-        fonts:  'app/include/fonts/',
-        htmls:  'app/include/html/',
-        sass:   'app/include/sass/',
+        js:     'app/include/js/',
+        css:    'app/include/css/',
+        img:    'app/include/img/',             //
+        fonts:  'app/include/fonts/',           //
+        htmls:  'app/include/html/',            //
+        sass:   'app/include/sass/',            //
+        babel:  'app/include/scripts/',         //
         coffee: 'app/include/coffee/',
         ts:     'app/include/typescript/',
-        babel:  'app/include/scripts/',
         packages:  'app/include/scripts/packages/',
         pack_react:  'app/include/scripts/packages/react/',
         libs:   'app/libs'
     },
     watch: {
         html:  'app/*.html',
-        js:     'build/styles/js/**/*.js',
-        css:    'build/styles/css/**/*.css',
-        img:    'build/styles/img/**/*.*',
-        fonts:  'build/styles/fonts/**/*.*',
-        htmls:  'app/include/html/**/*.html',
-        sass:   'app/include/sass/**/*.*',
+        jsmin:  'build/styles/js/**/*.js',
+        cssmin: 'build/styles/css/**/*.css',
+        img:    'app/include/img/**/*.*',       //
+        fonts:  'app/include/fonts/**/*.*',     //
+        htmls:  'app/include/html/**/*.html',   //
+        sass:   'app/include/sass/**/*.*',      //
+        babel:  'app/include/scripts/**/*.js',  //
         coffee: 'app/include/coffee/**/*.coffee',
         ts:     'app/include/typescript/**/*.ts',
-        babel:  'app/include/scripts/**/*.js',
         pack_react:  'app/include/scripts/packages/react/**/*.*'
     },
     clean: './build'
@@ -109,7 +109,10 @@ gulp.task('styles:sass', function () {
         .pipe(sass())
         .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'],
             { cascade: true }))              //CSS префиксы
-        .pipe(gulp.dest(path.build.css));      //Результат выгрузить в директорию
+        .pipe(gulp.dest(path.build.css))      //Результат выгрузить в директорию
+        .pipe(cssnano())                     //Сжатие файлов
+        .pipe(rename({suffix: '.min'}))      //Добавление суффикса .min
+        .pipe(gulp.dest(path.build.css));    //Результат выгрузить в директорию
 });
 
 gulp.task('styles:cssmin',  function () {
@@ -175,11 +178,13 @@ gulp.task('include:packages', [
 gulp.task('project:start', [
     'include:html',
     'styles:sass',
-    'styles:cssmin',
+    //'styles:cssmin',
     'include:coffee',
     'include:ts',
     'include:packages',
-    'styles:javascript'
+    'styles:javascript',
+    'include:img',
+    'include:fonts'
 ]);
 //
 // Start Gulp and Watch
@@ -187,16 +192,16 @@ gulp.task('project:start', [
 gulp.task('watch', ['project:start'], function(){
     gulp.watch([path.watch.htmls],      ['include:html']);
     gulp.watch([path.watch.sass],       ['styles:sass']);
-    gulp.watch([path.watch.css],        ['styles:cssmin']);
     gulp.watch([path.watch.coffee],     ['include:coffee']);
     gulp.watch([path.watch.ts],         ['include:ts']);
     gulp.watch([path.watch.babel],      ['styles:javascript']);
     gulp.watch([path.watch.pack_react], ['include:packages']);
     gulp.watch([path.watch.img],        ['include:img']);
     gulp.watch([path.watch.fonts],      ['include:fonts']);
+    //gulp.watch([path.watch.cssmin],     ['styles:cssmin']);
     //gulp.watch([path.watch.html],   reload);
-    //gulp.watch([path.watch.js],     reload);
-    //gulp.watch([path.watch.css],    reload);
+    //gulp.watch([path.watch.jsmin],  reload);
+    //gulp.watch([path.watch.cssmin], reload);
     //gulp.watch([path.watch.img],    reload);
     //gulp.watch([path.watch.fonts],  reload);
 });
